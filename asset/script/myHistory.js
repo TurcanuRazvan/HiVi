@@ -47,9 +47,9 @@ function onClickHistoryItemCheckbox(e){  //iau id-ul la ce am dat checkbox
     	}
 
     	if(checkedHistoryItems.length){
-    		document.getElementById("delete-history-items").classList.remove('displayNone');
+    		document.getElementById("list-actions").classList.remove('displayNone');
 
-    	}else{ document.getElementById("delete-history-items").classList.add('displayNone');}
+    	}else{ document.getElementById("list-actions").classList.add('displayNone');}
  	}
  }
 function onDeleteHistoryItems(){
