@@ -5,11 +5,11 @@ Acest proiect se bazeaza pe o extensie de browser web capabil sa ofere utilizato
 ## Ghid - Pentru a rula proiectul
 > Editor de text
 >
-> ..* Pentru implementarea interfetei Web: HTML5 - CSS3 - JS
+> - Pentru implementarea interfetei Web: HTML5 - CSS3 - JS
 
 ## Echipa
-- T. Razvan ,  
-+ F. Madalina , 
++ T. Razvan 
++ F. Madalina  
 + B. Ana
 >
 >Dezvoltarea aplicatiilor Web la nivel de client (FII Iasi)
