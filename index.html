@@ -3,30 +3,43 @@
 <head>
 	<meta charset="UTF-8">
 	<title>HIVI</title>
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="asset\css\style.css">
 </head>
 <body>
 	<header class="header-bar">
-		<img alt="Logo" src="logo-hivi.png">
+		<img alt="Logo" src="asset\image\logo-hivi.png">
 		<div class="menu-btn">
 				<button id="despreBtn" type="button" class="btn">Despre</button>
 				<button id="historyBtn" type="button" class="btn">History</button>
 		</div>
 	</header>
-	<article class="despre structure-page">
-		<h2 class="info-titlu">Despre aplicatie</h2>
-		<h4 class="info-continut">Aceasta aplicatie este creata pentru a te ajuta sa iti creezi o reprezentare grafica a istoricului tau.</h4>
-	</article>
+	<div>
+		<article class="despre structure-page">
+			<h2 class="info-titlu">Despre aplicatie</h2>
+			<h4 class="info-continut">Aceasta aplicatie este creata pentru a te ajuta sa iti creezi o reprezentare grafica a istoricului tau.</h4>
+		</article>
+		<footer class="footer structure-page">
+			<h3>Echipa:</h3>
+			<h4>Madalina</h4>
+			<h4>Ana</h4>
+			<h4>Marius</h4>
+		</footer>
+	</div>
 
 
-	<div class="list-history displayNone">
-		<ul>
-		  <li>Coffee</li>
-		  <li>Tea</li>
-		  <li>Milk</li>
-		</ul>
+	<div class="list-history structure-page displayNone">
+		<div class="preview">
+			<!-- <button id="template1">Template1</button> -->
+		</div>
+		<div class="history">
+			<button id="delete-history-items" class="displayNone">Delete</button>
+			<ul id="history-list">
+		
+
+			</ul>
+		</div>
 		
 	</div>
-	<script src="index.js"></script>
+	<script src="asset\js\index.js"></script>
 </body>
 </html>
