@@ -1,0 +1,21 @@
+{
+	"name":"HiVi",
+	"version":"1.0",
+	"manifest_version":2,
+	"description":"Istoric",
+	"permissions": [
+          "history",
+          "tabs"
+   ],
+	"browser_action":{
+		"default_icon":"asset/image/clock.png",
+		"default_popup":"popup.html"
+	},
+	"web_accessible_resources": [
+    "popup.html"
+  ],
+	"background": {
+        "scripts": ["asset/script/background.js"]
+    }
+
+}
