@@ -1,5 +1,86 @@
 var checkedHistoryItems=[]; //elementele bifate /list de url-uri
 var backgroundWindow=chrome.extension.getBackgroundPage();
+var urlsCount={};
+
+function getHostName(url) {
+    var match = url.match(/:\/\/(www\.)?(.[^/:]+)/i);
+    if (match != null && match.length > 2 && typeof match[2] === 'string' && match[2].length > 0) {
+    return match[2];
+    }
+    else {
+        return null;
+    }
+}
+
+function svgChart() {
+	document.getElementById('container').style.display='block';
+    var ll=[];
+    var val=[];
+    for ( var prop in urlsCount ) {
+    if ( urlsCount.hasOwnProperty( prop ) ) {
+       ll.push(prop)
+       val.push(urlsCount[prop])
+    }
+}
+
+    var some=[]
+    for(var i=0;i<ll.length;++i){
+        var temp={};
+        temp.name=ll[i];
+        temp.y=val[i];
+        some.push(temp);
+    }
+    console.log(some);
+    /*var input = document.createElement("div");
+	input.setAttribute("id", "cotainer");
+	input.setAttribute("style", "width:100%; height:400px;");*/
+
+    $(function () {
+    var myChart = Highcharts.chart('container', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Title'
+    },
+    subtitle: {
+        text: 'Subtitle'
+    },
+    xAxis: {
+        type: 'category'
+    },
+    yAxis: {
+        title: {
+            text: 'Total '
+        }
+
+    },
+    legend: {
+        enabled: false
+    },
+    plotOptions: {
+        series: {
+            borderWidth: 0,
+            dataLabels: {
+                enabled: true,
+                format: '{y}'
+            }
+        }
+    },
+
+    tooltip: {
+        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+    },
+
+    series: [{
+        name: 'Domains',
+        colorByPoint: true,
+        data: some
+    }]
+    });
+    });
+}
 
 function getHistoryElement(historyItem) {
 				// <li>
@@ -20,7 +101,8 @@ function getHistoryElement(historyItem) {
 
 	var time = document.createElement("span");
 	time.setAttribute("class", "time");
-	time.innerHTML=historyItem.lastVisitTime;
+
+	time.innerHTML=historyItem.url;//historyItem.lastVisitTime;
 
 	var url = document.createElement("span");
 	url.setAttribute("class", "url");
@@ -71,6 +153,9 @@ function onLoad(){
 	var historyList=document.getElementById("history-list");
 	historyList.addEventListener('click',onClickHistoryItemCheckbox);
 	document.getElementById("delete-history-items").addEventListener("click",onDeleteHistoryItems);
+
+    document.getElementById("exp").addEventListener("click",svgChart);
+
 	refreshHistory();
 }
 
@@ -80,7 +165,17 @@ function onSearchHistory(results) {
 	results.forEach(function(historyItem){
 		var historyElement= getHistoryElement(historyItem);
 		historyList.appendChild(historyElement);
+
+		var newUrl = getHostName(historyItem.url)
+	    
+		if(urlsCount.hasOwnProperty(newUrl)){
+	        urlsCount[newUrl]+=1;
+	    } else {
+	        urlsCount[newUrl]=1;
+	    }
+
 	})
+	console.log(urlsCount);
 }
 
 if (document.readyState !== 'loading') {
