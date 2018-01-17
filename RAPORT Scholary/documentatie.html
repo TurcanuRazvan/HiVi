@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" href="schoolarly.css">
+    <title>HiVi report</title>
+</head>
+<body>
+ <article typeof="schema:ScholarlyArticle">
+    <section>
+        <h2 align = "center">
+            Web Browser History Visualizer
+        </h2>
+
+        <ol>
+            <li property="schema:author" typeof="sa:ContributorRole">
+                <a property="schema:author" typeof="schema:Person">
+                    <span property="schema:givenName">Madalina</span>
+                    <span property="schema:familyName">Filibiu</span>
+                </a>
+            </li>
+			<li property="schema:author" typeof="sa:ContributorRole">
+                <a property="schema:author" typeof="schema:Person">
+                    <span property="schema:givenName">Razvan Florin Marius</span>
+                    <span property="schema:familyName">Turcanu</span>
+                </a>
+            </li>
+            <li property="schema:author" typeof="sa:ContributorRole">
+                <a property="schema:author" typeof="schema:Person">
+                    <span property="schema:givenName">Ana-Maria</span>
+                    <span property="schema:familyName">Braescu</span>
+                </a>
+            </li>
+        </ol>
+    </section>
+    <section>
+        <h1>
+            Summary
+        </h1>
+        <p>
+			This project is a Web browser extension that allows the user to visualize in multiple ways 
+			his navigation history and the bookmarks.
+			In a world based on communication, the way in which information is presented plays a role as
+			important as the actual content being transmitted.
+        </p>
+    </section>
+	<section>
+        <h1>
+            Contents
+        </h1>
+        <p>
+			Summary 
+		</p>
+		<p>
+			Contents 
+		</p>
+			1 Introduction 
+		</p>
+		<p>
+			2 Technologies
+		</p>
+		<p>
+			3 Arhitecture
+		</p>
+		<p>
+			4 How does it work?
+		</p>
+		<p>
+			Conclusions
+		</p>
+		<p>
+			Bibliography
+        </p>
+    </section>
+    <section>
+        <h1>
+            Introduction
+        </h1>
+		<p>
+			HiVi extension offers multiple manners to visualize the navigation history and favorite local or external 
+			web addresses taken from external sources(for example: Pocket).
+			
+		</p>
+		<p> 
+			Graphical representations are generated and exported in PNG, SVG formats and more.
+		</p>
+		<p>
+			The setup for this extension will be easy to configure. For exemple, the user will be able to exclude 
+			some Internet domains or particular URLs in order to not be displayed.
+		</p>
+    </section>
+	<section>
+		<h1>
+			Technologies
+		</h1>
+		<p>
+			The standard technology for generating graphical reprezentations and exporting them in PNG and SVG formats will be through using an API from HighCharts.
+
+			SVG images and their behaviors are defined in XML text files. This means that they can be searched, indexed, scripted, and compressed. 
+			As XML files, SVG images can be created and edited with any text editor, as well as with drawing software.
+
+			A major modern web browser, Google Chrome have SVG rendering support. 
+		</p>
+		<p>
+			JavaScript is a high-level, dynamic, weakly typed, prototype-based, multi-paradigm, and interpreted programming language. 
+			Alongside HTML and CSS, JavaScript is one of the three core technologies of World Wide Web content production. 
+			It is used to make webpages interactive
+		</p>
+		<p>
+			jQuery is a cross-platform JavaScript library designed to simplify the client-side scripting of HTML.
+			jQuery's syntax is designed to make it easier to navigate a document, select DOM elements, create animations and handle events.
+		</p>
+		
+		
+		<p>
+			HTML5 is a markup language used for structuring and presenting content on the World Wide Web.
+		</p>
+		<p>
+			HTML5 includes detailed processing models to encourage more interoperable implementations; 
+			it extends, improves and rationalizes the markup available for documents, and introduces 
+			markup and application programming interfaces (APIs) for complex web applications.
+		</p>
+		<p>
+			Cascading Style Sheets (CSS) is a style sheet language used for describing the 
+			presentation of a document written in a markup language. Although most often used 
+			to set the visual style of web pages and user interfaces written in HTML and XHTML, 
+			the language can be applied to any XML document, including SVG. 
+		</p>
+		<p>
+			Along with HTML and JavaScript, CSS is a cornerstone technology used by most 
+			websites to create visually engaging webpages, user interfaces for web applications, 
+			and user interfaces for many mobile applications.
+		</p>
+		<p>
+			Highcharts is a charting library written in pure JavaScript, offering an easy way of adding interactive charts to your web site or web application. Designed from ground up with mobile browsers in mind, everything from multitouch zooming to touch-friendly tooltips responds great on mobile platforms. In modern browsers graphs are rendered in SVG, with VML support for legacy browsers (e.g. Internet Explorer 6). Highcharts’ fast, mature 
+		</p>
+
+	</section>
+	<section>
+		<h1>
+			Arhitecture
+		</h1>
+		
+		<p>
+			Beside the fact that this aplication is displayed on UI, it is not linked to a database 
+			and it can be used offline.
+			The application can be used on mobile devices as well because is very responsive.
+		</p>
+		<img src = "arhitecture.png" alt="Arhitecture image">
+		
+	</section>
+	<section>
+		<h1>
+			How does it work?
+		</h1>
+		<p>
+			The user must click on the icon on the browser toolsbar. The icon looks like in image above.
+		</p>
+		<img src="icon_image.PNG" alt="icon">
+		<p>
+			A pop-up with a button will be displayed to acces the history. This is displayed in the image above.
+		</p>
+		<img src="pop-up_image.PNG" alt="pop-up">
+		<p>
+			After clicking on the pop-up button the HiVi will be revealed. The user will have displayed a describing page of the HiVi.
+		</p>
+		<img src="first_image.png" alt="Describing page">
+		<p>
+			This page relate about what is the purpose of it and has three important linking buttons:
+			<ol>
+			<li>Describing</li>
+			<li>History</li>
+			<li>Export</li>
+			</ol>
+			The first one is the "Home" button.
+		</p>
+		<p>
+		After clicking the second button the user will be lead to his navigation history where he can delete some of his unwanted to be displayed links. Because we all know that "a picture worth a thousand words", we will let you to see how does it works.
+		</p>
+		<img src= "delete_history_image.png" alt="Deletion part">
+		<p>
+		The third button will reveal "the heart of the HiVi", the exporting part, where the user can see his main searches exported into SVG or PNG format.
+		</p>
+		<img src="Export.png" alt="Export image">
+	</section>
+	<section>
+		<h2>
+			Conclusion
+		</h2>
+		<p>
+			In conclusion, this browser web extension will have multiple manners of displaying the history of navigation.
+			The most interesting thing is that the user will be able to extract all the relevant information in a SVG or PNG file.
+		</p>
+		<p>
+			A better version of this extension could be to storage in cloud for the user bookmarks.
+		</p>
+	</section>
+	<section>
+		<h2>
+			Bibliography
+		</h2>
+		<ul>
+			<li>
+				http://www.w3schools.com/
+			</li>
+			<li>
+				https://www.wikipedia.org/
+			</li>
+			<li>
+				https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5
+			</li>
+			<li>
+				http://www.svgopen.org/2003/papers/SVGGraphicRepresentation/index.html
+			</li>
+			<li>
+				https://www.highcharts.com
+			</li>
+		</ul>
+	</section>
+</article>
+</body>
+</html>
+
+
