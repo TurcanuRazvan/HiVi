@@ -169,6 +169,20 @@ section{
 }
 
 
+
+/* line graph */
+.link line {
+    stroke: #999;
+    stroke-opacity: 0.6;
+  }
+  
+  .labels text {
+    pointer-events: none;
+    font: 10px sans-serif;
+  }
+  
+
+
 /*// Extra small devices (portrait phones, less than 576px)
 @media (max-width: 575px) { ... }
 
