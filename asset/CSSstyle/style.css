@@ -150,6 +150,14 @@ section{
 .menu-reprezentation-graphic{
     padding: 15px;
 }
+.btnExport{
+    color: white;
+    background-color: #367f99;
+    font-size: 20px;
+    border: double;
+    cursor: pointer;
+    padding: 5px 25px;
+}
 
 @media only screen and (max-width: 480px){
     /* For telephone: */

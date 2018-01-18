@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="UTF-8">
 	<title>HIVI</title>
 	<link rel="stylesheet" href="asset/CSSstyle/style.css">
 </head>
+
 <body>
 	<header class="header-bar">
 		<img alt="Logo" src="asset/image/logo-hivi.png">
 		<div class="menu-btn">
-				<button id="despreBtn" type="button" class="btn">Despre</button>
-				<button id="historyBtn" type="button" class="btn">History</button>
-				<!-- <button id="graphicsBtn" type="button" class="btn">Graphics</button> -->
+			<button id="despreBtn" type="button" class="btn">Despre</button>
+			<button id="historyBtn" type="button" class="btn">History</button>
+			<!-- <button id="graphicsBtn" type="button" class="btn">Graphics</button> -->
 		</div>
 	</header>
-
-	<div id="container" style="width:100%; height:400px;"></div>
-
 	<div>
 		<article class="despre structure-page">
 			<h2 class="info-titlu">Despre aplicatie</h2>
@@ -37,13 +36,12 @@
 		</div>
 		<div class="history">
 			<section class="menu-reprezentation-graphic">
-				<button id="exp">Export</button>
-				<!-- <div class="">
-					<button>Save</button>
-					<div class="preview">
-						<h4>Preview</h4>
-					</div>
-				</div> -->
+				<button class="btnExport" id="btnExport">Export</button>
+				<svg id="history-graph" with="1200" height="600">
+					<circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="blue" />
+					<circle cx="200" cy="50" r="40" stroke="black" stroke-width="3" fill="blue" />
+					<path d="M100 50 L150 50 M145 55 L150 50 M145 45 L150 50" stroke-with="3" stroke="red"></path>
+				</svg>
 			</section>
 			<div id="list-actions" class="displayNone">
 				<button id="delete-history-items">Delete</button>
@@ -53,19 +51,11 @@
 			</ul>
 		</div>
 	</div>
-	<!-- <div class="create-graphics structure-page displayNone">
-		<article>
-			<section class="template1">Tema grafica 1</section>
-			<section class="template2">Tema grafica 2</section>
-			<section class="template3">Tema grafica 3</section>
-		</article>
-	</div> -->
+
 	<script src="asset/script/index.js"></script>
 	<script type="text/javascript" src="asset/script/myHistory.js"></script>
-
-    <script type="text/javascript" src="asset/script/highcharts.js"></script>
-	<script type="text/javascript" src="asset/script/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="asset/script/exporting.js"></script>
-<script type="text/javascript" src="asset/script/usdeur.js"></script>
+	<script src="asset/script/graph.js"></script>
+	<script src="asset/script/init.js"></script>
 </body>
+
 </html>
