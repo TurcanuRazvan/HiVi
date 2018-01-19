@@ -13,7 +13,7 @@
 		<div class="menu-btn">
 			<button id="despreBtn" type="button" class="btn">Despre</button>
 			<button id="historyBtn" type="button" class="btn">History</button>
-			<!-- <button id="graphicsBtn" type="button" class="btn">Graphics</button> -->
+			<button id="graphicsBtn" type="button" class="btn">Graphics</button>
 		</div>
 	</header>
 	<div>
@@ -35,14 +35,9 @@
 			<!-- <button id="template1">Template1</button> -->
 		</div>
 		<div class="history">
-			<section class="menu-reprezentation-graphic">
+			<div class="menu-reprezentation-graphic">
 				<button class="btnExport" id="btnExport">Export</button>
-				<svg id="history-graph" width="1200" height="1200">
-					<!-- <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="blue" />
-					<circle cx="200" cy="50" r="40" stroke="black" stroke-width="3" fill="blue" />
-					<path d="M100 50 L150 50 M145 55 L150 50 M145 45 L150 50" stroke-with="3" stroke="red"></path> -->
-				</svg>
-			</section>
+			</div>
 			<div id="list-actions" class="displayNone">
 				<button id="delete-history-items">Delete</button>
 			</div>
@@ -52,14 +47,40 @@
 		</div>
 	</div>
 
+	<div class="create-graphics structure-page displayNone">
+		<!-- <svg id="history-graph" width="800" height="800">
+			<circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="blue" />
+			<circle cx="200" cy="50" r="40" stroke="black" stroke-width="3" fill="blue" />
+			<path d="M100 50 L150 50 M145 55 L150 50 M145 45 L150 50" stroke-with="3" stroke="red"></path>
+		</svg> -->
+
+		<div class="section-menu-graphics">
+			<h3>Tipuri de grafice</h3>
+			<div class="separator"></div>
+			
+			<a id="graphic1" href="asset/HTML/graph1.html">
+				<button class="grafice">
+					<img alt="Graph 1" src="asset/image/graf1.png" /> Graphic 1
+				</button>
+			</a>
+
+			<svg id="history-graph" width="800" height="800">
+			</svg>
+
+			<a id="graphic2" href="http://www.google.com/">
+				<button class="grafice">
+					<img alt="Graph 2" src="asset/image/graf2.png" /> Graphic 2
+				</button>
+			</a>
+		</div>
+	</div>
+
 	<script src="asset/script/index.js"></script>
-	<script type="text/javascript" src="asset/script/myHistory.js"></script>
+	<script src="asset/script/myHistory.js"></script>
 	<!-- <script src="asset/script/graphDraw.js"></script> -->
 	<script src="asset/script/d3.v4.min.js"></script>
 	<script src="asset/script/d3-ellipse-force.js"></script>
 	<script src="asset/script/graph.js"></script>
 	<script src="asset/script/init.js"></script>
-	
 </body>
-
 </html>

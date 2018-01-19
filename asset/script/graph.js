@@ -98,7 +98,7 @@ hivi.graph = (function (window, document) {
             }
         });
         console.log(graph);
-        debugger;
+        // debugger;
         return graph;
 
     };
