@@ -36,7 +36,7 @@
 		</div>
 		<div class="history">
 			<div class="menu-reprezentation-graphic">
-				<button class="btnExport" id="btnExport">Export</button>
+				<!-- <button class="btnExport" id="btnExport">Export</button> -->
 			</div>
 			<div id="list-actions" class="displayNone">
 				<button id="delete-history-items">Delete</button>
@@ -57,21 +57,33 @@
 		<div class="section-menu-graphics">
 			<h3>Tipuri de grafice</h3>
 			<div class="separator"></div>
-			
-			<a id="graphic1" href="asset/HTML/graph1.html">
-				<button class="grafice">
-					<img alt="Graph 1" src="asset/image/graf1.png" /> Graphic 1
-				</button>
-			</a>
+			<div id="select-graphics">
+				<div id="graphic1" class="grafice">
+					<img alt="Graph 1" src="asset/image/graph(17).png" />
+					<span>Graphic 1</span>
+				</div>
+				<div id="graphic2" class="grafice">
+					<img alt="Graph 2" src="asset/image/graf2.png" />
+					<span>Graphic 2</span>
+				</div>
+			</div>
 
-			<svg id="history-graph" width="800" height="800">
-			</svg>
+			<div id="history-graph-container" >
+				<div id="export">
+					<button id="export-svg" class="btnExport">SVG</button>
+					<button id="export-png" class="btnExport">PNG</button>
+				</div>
+				<div class="container-svg">
+					<svg id="history-graph" width="100%" height="100%"  xmlns="http://www.w3.org/2000/svg">
+					</svg>
+				</div>
+				
+			</div>
 
-			<a id="graphic2" href="http://www.google.com/">
-				<button class="grafice">
-					<img alt="Graph 2" src="asset/image/graf2.png" /> Graphic 2
-				</button>
-			</a>
+
+			<div id="history-charts" class="displayNone">
+				<span>GRAFUL TAU</span>
+			</div>
 		</div>
 	</div>
 
@@ -83,4 +95,5 @@
 	<script src="asset/script/graph.js"></script>
 	<script src="asset/script/init.js"></script>
 </body>
+
 </html>

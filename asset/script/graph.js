@@ -2,20 +2,17 @@ var hivi = hivi || {};
 hivi.graph = (function (window, document) {
     var history = [];
     var visits = {};
+    var state = { svg: null, graphModel: null };
 
     // function declarations
     function init(originalHistory) {
-        // console.log(history);
-        // console.log(history[1].url.split("/"));
-        history = maphHistory(originalHistory);
-        console.log(history);
-        // loadVisits();
-        // mapHistoryToGraph();
-        var graphModel = mapHistoryToGraph();
-        test(graphModel);
+
+        history = mapHistory(originalHistory);
+        state.graphModel = mapHistoryToGraph();
+        test(state.graphModel);
     };
 
-    function maphHistory(historyList) {
+    function mapHistory(historyList) {
         var allItems = [];
         historyList.forEach(function (historyItem) {
             var url = historyItem.url;
@@ -33,38 +30,9 @@ hivi.graph = (function (window, document) {
             })
 
         });
-        console.log(allItems);
+        // console.log(allItems);
         return allItems;
     };
-
-    function loadVisits() {
-        var backgroundWindow = chrome.extension.getBackgroundPage();
-        // debugger;
-        console.log(hivi.backgroundWindow);
-        history.forEach(function (historyDomain) {
-            historyDomain.items.forEach(function (historyItem) {
-
-                backgroundWindow.returnVisits({
-                    'url': historyItem.url
-                }, visitsCallback.bind(null, historyDomain.domain, historyItem.url));
-
-            });
-
-        });
-    };
-
-    function visitsCallback(domain, url, visitItems) {
-        // console.log(visitItems);
-        test = visitItems;
-        if (!visits[domain]) {
-            visits[domain] = {};
-        }
-        visits[domain][url] = visitItems;
-
-
-    };
-
-    // setTimeout(function () { console.log(visits); }, 3000);
 
     function mapHistoryToGraph() {
         var graph = {
@@ -73,13 +41,6 @@ hivi.graph = (function (window, document) {
         };
 
         var currentDomains = [];
-        // var historyList=[];
-
-        // for (let index = history.length - 1; index >= 0; index--) {
-        //     const element = history[index];
-        //     historyList.push(element);
-        // }
-
         history.forEach(function (historyItem, index, historyArray) {
             if (currentDomains.indexOf(historyItem.domain) === -1) {
                 currentDomains.push(historyItem.domain);
@@ -104,10 +65,15 @@ hivi.graph = (function (window, document) {
     };
 
     function test(graph) {
-        var svg = d3.select("#history-graph"),
-            width = +svg.attr("width"),
-            height = +svg.attr("height");
-
+        var body = document.getElementsByTagName("body")[0];
+        var historyGraph = document.getElementById("history-graph");
+        var width = body.offsetWidth - 160;//+svg.attr("width"),
+        var height = 500;//+svg.attr("height");
+        historyGraph.setAttribute("width", width);
+        historyGraph.setAttribute("height", height);
+        // historyGraph.setAttribute("viewBox", "0 0" + width + " " + height);
+        state.svg = d3.select("#history-graph");
+        var svg = state.svg;
         var color = d3.scaleOrdinal(d3.schemeCategory20);
 
         var nd;
@@ -141,7 +107,7 @@ hivi.graph = (function (window, document) {
             .attr("ry", function (d) { return d.ry; })
             .attr("fill", function (d) { return color(d.group); })
             .call(d3.drag()
-                .on("start", dragstarted)
+                .on("start", dragStarted)
                 .on("drag", dragged)
                 .on("end", dragended));
 
@@ -163,23 +129,24 @@ hivi.graph = (function (window, document) {
         simulation.force("link")
             .links(graph.links);
 
+
         function ticked() {
-            link
-                .attr("x1", function (d) { return d.source.x; })
+            link.attr("x1", function (d) { return d.source.x; })
                 .attr("y1", function (d) { return d.source.y; })
                 .attr("x2", function (d) { return d.target.x; })
                 .attr("y2", function (d) { return d.target.y; });
 
-            node
-                .attr("cx", function (d) { return d.x; })
-                .attr("cy", function (d) { return d.y; });
+            node.attr("cx", function (d) { return d.x = Math.max(d.rx, Math.min(width - d.rx, d.x)); })
+                .attr("cy", function (d) { return d.y = Math.max(d.ry, Math.min(height - d.ry, d.y)); });
+
             text
                 .attr("x", function (d) { return d.x; })
                 .attr("y", function (d) { return d.y; });
-
         }
 
-        function dragstarted(d) {
+
+
+        function dragStarted(d) {
             if (!d3.event.active) simulation.alphaTarget(0.3).restart();
             d.fx = d.x;
             d.fy = d.y;
@@ -195,7 +162,136 @@ hivi.graph = (function (window, document) {
             d.fx = null;
             d.fy = null;
         }
-    };    
+        updateCanvasLinksStyle(svg.node());
+
+    };
+
+
+    // see: https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Drawing_DOM_objects_into_a_canvas
+    function convertSVGtoCanvas(svg) {
+        var DomURL = window.URL || window.webkitURL || window;
+        var svgElement = svg.node().cloneNode(true);
+        var svgString = getSVGString(svgElement);
+        var image = new Image();
+        var svgBlob = new Blob([svgString], { type: "image/svg+xml;charset=utf-8" });
+        var url = DomURL.createObjectURL(svgBlob);
+
+        var canvas = getSVGCanvas();
+        var context = canvas.getContext("2d");
+        image.onload = function () {
+            context.drawImage(image, 0, 0);
+
+            var dataURL = canvas.toDataURL("image/png");
+            saveDataURL(dataURL, 'graph.png');
+            DomURL.revokeObjectURL(url);
+        }
+        image.src = url;
+    }
+
+    function getSVGString(node) {
+        var backgroundRectangle = getSVGBackground();
+        node.insertBefore(backgroundRectangle, node.firstChild);
+
+        var svgString = domNodeToString(node);
+        return svgString;
+    }
+
+    function saveDataURL(dataURL, name) {
+        var link = document.createElement('a');
+        link.setAttribute('download', name);
+        link.setAttribute('href', dataURL);
+        link.click();
+    }
+
+    function getSVGBackground() {
+        var backgroundRectangle = document.createElement('rect');
+        backgroundRectangle.setAttribute("width", '100%');
+        backgroundRectangle.setAttribute("height", '100%');
+        backgroundRectangle.setAttribute('fill', 'white');
+
+        return backgroundRectangle;
+    }
+
+    function getSVGCanvas() {
+        var svg = document.getElementById("history-graph");
+        var canvas = document.createElement("canvas");
+        debugger;
+        var width = svg.clientWidth;
+        canvas.setAttribute('width', width);
+        var height = svg.clientHeight;
+        canvas.setAttribute("height", height);
+
+        return canvas;
+    }
+
+    // Get the string representation of a DOM node (removes the node)
+    function domNodeToString(domNode) {
+        var element = document.createElement("div");
+        element.appendChild(domNode.cloneNode(true));
+        return element.innerHTML;
+    }
+
+    function updateCanvasLinksStyle(svg) {
+        var linksParent = svg.getElementsByClassName("link")[0];
+        var svgLines = linksParent.getElementsByTagName("line");
+
+        for (let index = 0; index < svgLines.length; index++) {
+            const element = svgLines[index];
+            element.style.stroke = "#999";
+        }
+
+    }
+
+    (function () {
+
+        window.addEventListener("resize", resizeThrottler, false);
+
+        var resizeTimeout;
+        function resizeThrottler() {
+            // ignore resize events as long as an actualResizeHandler execution is in the queue
+            if (!resizeTimeout) {
+                resizeTimeout = setTimeout(function () {
+                    resizeTimeout = null;
+                    actualResizeHandler();
+
+                    // The actualResizeHandler will execute at a rate of 15fps
+                }, 66);
+            }
+        }
+
+        function actualResizeHandler() {
+            // handle the resize event
+            if (state.graphModel && state.svg) {
+                var svg = state.svg.node();
+                svg.innerHTML = "";
+                test(state.graphModel);
+            }
+        }
+
+    }());
+
+    function convertSVGToXML(svg) {
+        var DomURL = window.URL || window.webkitURL || window;
+        var svgElement = svg.node().cloneNode(true);
+        var svgString = getSVGString(svgElement);
+        var svgBlob = new Blob([svgString], { type: "image/svg+xml;charset=utf-8" });
+        var url = DomURL.createObjectURL(svgBlob);
+        var a = document.createElement("a");
+        a.href = url;
+        a.download = "graph.svg";
+        a.click();
+        DomURL.URL.revokeObjectURL(url);
+    }
+
+
+    // EVENTS
+    document.getElementById('export-png').addEventListener('click', function () {
+        convertSVGtoCanvas(state.svg);
+    });
+
+    document.getElementById('export-svg').addEventListener('click', function () {
+        convertSVGToXML(state.svg);
+    });
 
 
     return {

@@ -25,4 +25,16 @@ hivi.backgroundWindow = chrome.extension.getBackgroundPage();
 		document.getElementsByClassName('create-graphics')[0].classList.remove('displayNone');
 	});
 
+
+	document.getElementById('graphic1').addEventListener('click', function() {
+		document.getElementById('history-charts').classList.add('displayNone');
+		document.getElementById('history-graph-container').classList.remove('displayNone');
+
+	});
+	document.getElementById('graphic2').addEventListener('click', function() {
+		document.getElementById('history-charts').classList.remove('displayNone');
+		document.getElementById('history-graph-container').classList.add('displayNone');
+
+	});
+
 })();
