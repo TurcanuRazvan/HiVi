@@ -189,19 +189,21 @@ section{
   }
   
   .grafice img{
-    width: 26%;
-    height: 61px;
-      cursor: pointer;
-      margin-top: 2%;
-      margin-bottom: 2%;
+    width: 40%;
+    margin-right: 9%;
+    height: 133px;
+    cursor: pointer;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border: 2px solid #62a29e;
   }
-  .grafice{
+  /* .grafice{
     color: #5f8d89;
     font-size: 20px;
     margin-bottom: 3%;
     background-color: #c2c4c9;
     
-  }
+  } */
 
   #select-graphics>div{
     display: inline;

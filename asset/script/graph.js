@@ -280,7 +280,7 @@ hivi.graph = (function (window, document) {
         a.href = url;
         a.download = "graph.svg";
         a.click();
-        DomURL.URL.revokeObjectURL(url);
+        DomURL.revokeObjectURL(url);
     }
 
 
