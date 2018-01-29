@@ -83,7 +83,7 @@
 			
 		</p>
 		<p> 
-			Graphical representations are generated and exported in PNG, SVG formats and more.
+			Graphical representations are generated and exported in PNG and SVG formats.
 		</p>
 		<p>
 			The setup for this extension will be easy to configure. For exemple, the user will be able to exclude 
@@ -95,7 +95,7 @@
 			Technologies
 		</h1>
 		<p>
-			The standard technology for generating graphical reprezentations and exporting them in PNG and SVG formats will be through using an API from HighCharts.
+			The standard technology for generating graphical reprezentations and exporting them in PNG and SVG formats is using D3 library.
 
 			SVG images and their behaviors are defined in XML text files. This means that they can be searched, indexed, scripted, and compressed. 
 			As XML files, SVG images can be created and edited with any text editor, as well as with drawing software.
@@ -133,8 +133,19 @@
 			and user interfaces for many mobile applications.
 		</p>
 		<p>
-			Highcharts is a charting library written in pure JavaScript, offering an easy way of adding interactive charts to your web site or web application. Designed from ground up with mobile browsers in mind, everything from multitouch zooming to touch-friendly tooltips responds great on mobile platforms. In modern browsers graphs are rendered in SVG, with VML support for legacy browsers (e.g. Internet Explorer 6). Highcharts’ fast, mature 
+			D3.js (or just D3 for Data-Driven Documents) is a JavaScript library for producing 
+			dynamic, interactive data visualizations in web browsers. It makes use of the widely
+			implemented SVG, HTML5, and CSS standards. It is the successor to the earlier Protovis
+			framework. In contrast to many other libraries, D3.js allows great control over the
+			final visual result.
 		</p>
+		<p>
+			D3 allows us to bind arbitrary data to a Document Object Model (DOM), and then apply 
+			data-driven transformations to the document. For example, we could use D3 to create an 
+			interactive SVG bar chart with smooth transitions and interaction. Or even better, an 
+			extraordinary graph with a part of the client's browser searched history.
+		</p>
+		
 
 	</section>
 	<section>
@@ -144,12 +155,17 @@
 		
 		<p>
 			Beside the fact that this aplication is displayed on UI, it is not linked to a database 
-			and it can be used offline.
+			or a server and it can be used offline.
 			The application can be used on mobile devices as well because is very responsive.
 		</p>
 		<img src = "arhitecture.png" alt="Arhitecture image">
-		
+		<p>
+			This Single Page Application is an extension that request the client history browser, 
+			get it in response and display it as a list, a SVG Representation with elipses that represents 
+			every domain that the user accesed linked to next domains where the user was redirected.
+		</p>
 	</section>
+	
 	<section>
 		<h1>
 			How does it work?
@@ -163,34 +179,41 @@
 		</p>
 		<img src="pop-up_image.PNG" alt="pop-up">
 		<p>
-			After clicking on the pop-up button the HiVi will be revealed. The user will have displayed a describing page of the HiVi.
+			After clicking on the pop-up button the HiVi will be revealed. The user will have displayed a
+			describing page of the aplication.
 		</p>
 		<img src="first_image.png" alt="Describing page">
 		<p>
 			This page relate about what is the purpose of it and has three important linking buttons:
 			<ol>
-			<li>Describing</li>
+			<li>About</li>
 			<li>History</li>
-			<li>Export</li>
+			<li>Graphics</li>
 			</ol>
-			The first one is the "Home" button.
+			The first one is sort of a "Home" button where the user is able to read the purpose of this 
+			extension and it's "creators". This button redirects to the main page.
 		</p>
 		<p>
-		After clicking the second button the user will be lead to his navigation history where he can delete some of his unwanted to be displayed links. Because we all know that "a picture worth a thousand words", we will let you to see how does it works.
+		After clicking the second button the user will be lead to his navigation history where he can 
+		delete some of his unwanted to be displayed links. Because we all know that "a picture worth a 
+		thousand words", we will let you to see how does it works.
 		</p>
 		<img src= "delete_history_image.png" alt="Deletion part">
 		<p>
-		The third button will reveal "the heart of the HiVi", the exporting part, where the user can see his main searches exported into SVG or PNG format.
+		The third button will reveal "the heart of the HiVi", the Graph Representation of the history along 
+		the exporting part, where the user can see his main domains searched exported into SVG or PNG format.
 		</p>
-		<img src="Export.png" alt="Export image">
+		<!--<img src="Export.png" alt="Export image">-->
+		<img src = "Export image 1.PNG" alt = "Export image 1">
 	</section>
 	<section>
 		<h2>
 			Conclusion
 		</h2>
 		<p>
-			In conclusion, this browser web extension will have multiple manners of displaying the history of navigation.
-			The most interesting thing is that the user will be able to extract all the relevant information in a SVG or PNG file.
+			In conclusion, this browser web extension has multiple manners of displaying the history of navigation.
+			The most interesting thing is that the user is able to extract all the relevant information in a 
+			SVG or PNG file.
 		</p>
 		<p>
 			A better version of this extension could be to storage in cloud for the user bookmarks.
@@ -214,7 +237,7 @@
 				http://www.svgopen.org/2003/papers/SVGGraphicRepresentation/index.html
 			</li>
 			<li>
-				https://www.highcharts.com
+				https://d3js.org/
 			</li>
 		</ul>
 	</section>
