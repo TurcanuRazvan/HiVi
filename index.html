@@ -6,25 +6,40 @@
 	<title>HIVI</title>
 	<link rel="stylesheet" href="asset/CSSstyle/style.css">
 </head>
+<!------chart----------->
+<style>
 
+.bar {
+  fill: steelblue;
+}
+
+.bar:hover {
+  fill: brown;
+}
+
+.axis--x path {
+  display: none;
+}
+</style>
+<!---------------------->
 <body>
 	<header class="header-bar">
 		<img alt="Logo" src="asset/image/logo-hivi.png">
 		<div class="menu-btn">
-			<button id="despreBtn" type="button" class="btn">Despre</button>
+			<button id="despreBtn" type="button" class="btn">About</button>
 			<button id="historyBtn" type="button" class="btn">History</button>
 			<button id="graphicsBtn" type="button" class="btn">Graphics</button>
 		</div>
 	</header>
 	<div>
 		<article class="despre structure-page">
-			<h2 class="info-titlu">Despre aplicatie</h2>
-			<h4 class="info-continut">Aceasta aplicatie este creata pentru a te ajuta sa iti creezi o reprezentare grafica a istoricului tau.</h4>
+			<h2 class="info-titlu">About</h2>
+			<h4 class="info-continut">This extension was made for displaying your browser history in multiple ways.</h4>
 		</article>
 		<footer class="footer structure-page">
-			<h3>Echipa:</h3>
+			<h3>Team:</h3>
 			<h4>Madalina</h4>
-			<h4>Ana</h4>
+			<h4>Ana-Maria</h4>
 			<h4>Marius</h4>
 		</footer>
 	</div>
@@ -35,9 +50,7 @@
 			<!-- <button id="template1">Template1</button> -->
 		</div>
 		<div class="history">
-			<div class="menu-reprezentation-graphic">
-				<!-- <button class="btnExport" id="btnExport">Export</button> -->
-			</div>
+			
 			<div id="list-actions" class="displayNone">
 				<button id="delete-history-items">Delete</button>
 			</div>
@@ -82,7 +95,14 @@
 
 
 			<div id="history-charts" class="displayNone">
-				<span>GRAFUL TAU</span>
+			
+				<!-------pt grafic------------>
+				<div id="container" style="width:100%; height:400px;"></div>
+				<svg width="960" height="500"></svg>
+				<div class="menu-reprezentation-graphic">
+					<button class="btnExport" id="btnExport">Export</button>
+				</div>
+				<!---------------------------->			
 			</div>
 		</div>
 	</div>
