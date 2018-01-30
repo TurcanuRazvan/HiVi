@@ -5,7 +5,8 @@ Acest proiect se bazeaza pe o extensie de browser web capabil sa ofere utilizato
 > Editor de text
 >
 > - Pentru implementarea interfetei Web: HTML5 - CSS3 - JS
-
+## Video
+https://vimeo.com/253316503
 ## Echipa
 + T. Razvan 
 + F. Madalina  
